@@ -1,8 +1,9 @@
-#Nomes: Felipe Men dos Santos RMs: 557571
+#Nomes: Felipe Men dos Santos; Otho Oliveira Candido; Lucas Rodrigues de Queiroz; João Pedro Silva Pinheiro
+#RMs: 557571; 55054; 556323; 557013
 
 import time
 
-print("Seja Bem-Vindo(a) ao nosso sistema de estatísticas para os nossos corredores!")
+print("Seja Bem-Vindo(a) ao nosso sistema de estatísticas para os nossos pilotos!")
 time.sleep(2)
 
 dados = []
@@ -17,17 +18,18 @@ def listar_dados(dados):
     print("Nome:    Melhor Volta:    Vitórias:")
     for i in range(linhas):
         for j in range(colunas):
-            print((i + 1), "-", dados[i][j], end="     ")
+            print(dados[i][j], end="     ")
         print()
-def remover_corredor(index):
+def remover_piloto(index):
     index -= 1
+    print(f"Piloto {dados[index][0]} removido com sucesso!")
     dados.pop(index)
 def get_estatistica():
     while True:
         estatisticas = criar_lista()
-        corredor = str(input("Digite o nome do corredor: "))
-        if not corredor.isdigit():
-            estatisticas.append(corredor)
+        piloto = str(input("Digite o nome do piloto: "))
+        if not piloto.isdigit():
+            estatisticas.append(piloto)
         else:
             print("Nome Inválido.")
             continue
@@ -49,9 +51,9 @@ def main():
     while True:
         print("""
 O que deseja fazer?
-1 - Adicionar corredor
-2 - Remover corredor
-3 - Listar corredor(es)
+1 - Adicionar piloto
+2 - Remover piloto
+3 - Listar piloto(es)
 4 - Sair
 """)
         opcao = int(input("""
@@ -65,19 +67,18 @@ Escolha uma das opções: """))
                 dados.append(get_estatistica())
             case 2:
                 if not len(dados) == 0:
-                    index = input("Digite o lugar/número do corredor que deseja remover: ")
+                    index = input("Digite o lugar/número do piloto que deseja remover: ")
                     if index.isdigit():
                         index = int(index)
-                        remover_corredor(index)
-                        print("Corredor removido com sucesso!")
+                        remover_piloto(index)
                     else:
                         print("Valor Inválido")
                         continue
                 else:
-                    print("A lista de corredores está vazia!")
+                    print("A lista de pilotos está vazia!")
             case 3:
                 if not len(dados) == 0:
                     listar_dados(dados)
                 else:
-                    print("A lista de corredores está vazia!")
+                    print("A lista de pilotos está vazia!")
 main()
